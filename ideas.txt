@@ -1,0 +1,44 @@
+Projects Suggestions (in addition to class discussion)
+ 
+Improving Generalizability of Deep Learning with Confounding Correction
+(this topic could be split into three projects focusing on different aspects: The first one is application-based; the second one is more about deep learning/machine learning itself; the third one is an empirical study)
+With its great promises, deep learning is being applied to many modern data sets. These data sets are typically very expensive and have expressive raw features in many different modalities (e.g. video data). When working with this kind of data, there is no guarantee that deep learning models are learning from generalized features or just confounding factors [1] from raw data. The current solution is only limited to testing the model generalizability with held-out validation data set which does not improve anything about the endless parameter tuning process. Inspired with how linear models correct confounding factors [2], we may come up solutions that can directly improve generalizability upon not-fully-tuned networks directly to accelerate training process.
+It will also be exciting to see whether this technique can be used directly on fully trained models to improve their performance. We may have a chance to reach state-of-art performance with much smaller networks if we can identify that there are confounding factors impeding the training process. Therefore, we could improve the generalizability upon it.
+Generative Adversarial Nets [3] (and more recently infoGAN [4]) uses a min-max formulation to force neural networks to discard some information by maximizing the prediction error rate of relevant information, while it has a clear advantage of min-max formulation in terms of theory, but it loses the flexibility because not every information can fall into this formulation with a well-defined cost function. It is interesting to compare the difference of how GAN and these confounding correction models work empirically. (We may have to formalize GAN into a discriminative model first, and this could already have enough novelty for a paper. )
+Haohan has some initial scripts to help get started, contact him if you are interested.
+References:
+[1]. https://en.wikipedia.org/wiki/Confounding
+[2]. Rakitsch, Barbara, et al. "A Lasso multi-marker mixed model for association mapping with population structure correction." Bioinformatics 29.2 (2013): 206-214.
+[3]. Goodfellow, Ian, et al. "Generative adversarial nets." Advances in Neural Information Processing Systems. 2014.
+[4]. Chen, Xi, et al. "InfoGAN: Interpretable Representation Learning by Information Maximizing Generative Adversarial Nets." arXiv preprint arXiv:1606.03657 (2016).
+ 
+Syntax Independent Sentence Embedding
+The success of word2vec naturally leads to extensive studies of sentence2vec, or sentence embeddings [5-8]. However, rarely any works focus on examining the contents of these learned embeddings. Previous work suggests that most of these sentence embeddings cover a variety of different information [9]. While it is arguable whether sentence embedding should include semantic information only or as much information as possible, there is no harm to introduce new techniques and publish new models and embeddings exclusively on semantics. Techniques discussed in previous project proposal should be able to be applied here to achieve this goal.
+References:
+[5]. Ma, Mingbo, et al. "Dependency-based convolutional neural networks for sentence embedding." Proceedings of the 53rd Annual Meeting of the Association for Computational Linguistics and the 7th International Joint Conference on Natural Language Processing. Vol. 2. 2015.
+[6]. Palangi, Hamid, et al. "Deep sentence embedding using long short-term memory networks: Analysis and application to information retrieval." IEEE/ACM Transactions on Audio, Speech, and Language Processing 24.4 (2016): 694-707.
+[7]. Kiros, Ryan, et al. "Skip-thought vectors." Advances in neural information processing systems. 2015.
+[8]. Hill, Felix, Kyunghyun Cho, and Anna Korhonen. "Learning distributed representations of sentences from unlabelled data." arXiv preprint arXiv:1602.03483 (2016).
+[9]. Adi, Yossi, et al. "Fine-grained Analysis of Sentence Embeddings Using Auxiliary Prediction Tasks." arXiv preprint arXiv:1608.04207 (2016).
+ 
+Train a Sparse Neural Network
+While deep learning reaches better results with deeper structures, it consumes more time in computation and makes it unrealistic to perform real-time tasks. A question is raised about whether we could make deeper structures compute faster. Sparsity might be one direction to go. L1 regularization might be a good way to introduce sparsity into network weights, however, empirically, L1 regularization dramatically impede the training procedure (presumably because either that it makes the non-convex cost surface more like a cliff shape or L1 norm is not differentiable everywhere*). Other methods are introduced e.g. [10] uses a matrix decomposition technique. Proximal gradient descent [11] alike methods might also offer some solutions. Past research indicates that up to 95% of weights are dependent on the rest in a network [12], what can we learn from this to induce sparsity?
+References:
+[10]. Liu, Baoyuan, et al. "Sparse convolutional neural networks." Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition. 2015.
+[11]. Chen, Xi, et al. "Smoothing proximal gradient method for general structured sparse regression." The Annals of Applied Statistics (2012): 719-752.
+[12]. Denil, Misha, et al. "Predicting parameters in deep learning." Advances in Neural Information Processing Systems. 2013.
+* Note that this is only a conjecture.
+ 
+---Some other Application Ideas
+Learning hierarchical representations from hierarchical biological data
+Biological data naturally forms into hierarchical structures (e.g. genome -> protein -> traits), it is an interesting and presumably greatly impactful project that if we could encode the lower level data into embeddings that encode higher level information. However, initial experiments suggest this goal is very challenging.
+ 
+Mind Reading (Decoding brain wave into sentences/words)
+Brain wave data (fMRI/EEG) is always intriguing. Whether the modeling power of deep learning can help decode these signals remains a challenging question. This idea is also interesting in another aspect: perhaps the best model that can understand natural neural network (brain) is the artificial neural network.
+ 
+---Some other Method Ideas (these are not very well verified yet)
+Modality Separation Neural Networks
+This is similar to Bhiksha’s idea about a neural network should simulate the human brain in terms of assign different functionalities to different regions. While multimodal experiments might be hard to start with, a simpler task would see whether even on image data only, whether separating the texture and color modality could help the model, in terms of accuracy or training time to reach a comparable accuracy.
+ 
+Genetic Algorithms for Neural Networks
+Using genetic algorithms to learn architecture. This used to be popular around 2000 but fell out of favor due to computational cost and the fact that just making the model bigger nearly always made it better. But maybe with recent methods, genetic algorithms for architecture (not weight updates) could be useful. However, note that it is known that the optimal weights of a n hidden states neural network is independent of the optimal weights of a (n+1) hidden states neural network. So this algorithm may not offer you the optimal solution, but it’s something quite interesting to explore with.
