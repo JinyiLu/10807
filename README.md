@@ -3,6 +3,7 @@
 ##
 * git clone https://JinyiLu@github.com/JinyiLu/10807.git
 * ./darknet yolo valid cfg/tiny-yolo.cfg tiny-yolo.weights
+* ./darknet yolo valid cfg/yolo.cfg yolo.weights
 
 ## References
 * [Object Detection](https://www.zhihu.com/question/34223049/answer/110071873)
