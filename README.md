@@ -16,3 +16,4 @@
 * [Yolo](http://pjreddie.com/darknet/yolo/)
 * [PASCAL VOC2012](http://host.robots.ox.ac.uk/pascal/VOC/voc2012/htmldoc/devkit_doc.html#SECTION00050000000000000000)
 * https://www.bittiger.io/competition
+* [KITTI](http://www.cvlibs.net/datasets/kitti/eval_object.php)
