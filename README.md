@@ -8,7 +8,7 @@
 * g++ -O3 -DNDEBUG -o evaluate_object evaluate_object.cpp
 
 ## Yolo
-* Nov_4: directly use provided model to make prediction on the whole training set [result](results/yolo_Nov_4_rf/plot/)
+* Nov_4: directly use provided model to make prediction on the whole training set, [result](results/yolo_Nov_4_rf/plot/)
 
 ## References
 * [Object Detection](https://www.zhihu.com/question/34223049/answer/110071873)
