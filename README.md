@@ -4,6 +4,11 @@
 * git clone https://JinyiLu@github.com/JinyiLu/10807.git
 * ./darknet yolo valid cfg/tiny-yolo.cfg tiny-yolo.weights
 * ./darknet yolo valid cfg/yolo.cfg yolo.weights
+* python yolo_toeva.py ../../../data/yolo/results_Nov_4 ../../../data/yolo/results_Nov_4_eva_format
+* g++ -O3 -DNDEBUG -o evaluate_object evaluate_object.cpp
+
+## Yolo
+* Nov_4: directly use provided model to make prediction on the whole training set
 
 ## References
 * [Object Detection](https://www.zhihu.com/question/34223049/answer/110071873)

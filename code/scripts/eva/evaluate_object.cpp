@@ -679,6 +679,9 @@ bool eval(string result_sha,Mail* mail){
   }
   mail->msg("  done.");
 
+  fprintf(stderr, "Load %lu Images Ground Truth\n", groundtruth.size());
+  fprintf(stderr, "Load %lu Images Detection\n", detections.size());
+
   // holds pointers for result files
   FILE *fp_det=0, *fp_ori=0;
 
