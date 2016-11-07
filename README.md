@@ -6,6 +6,7 @@
 * ./darknet yolo valid cfg/yolo.cfg yolo.weights
 * python yolo_to_eva.py ../../../data/yolo/results_Nov_4 ../../../data/yolo/results_Nov_4_eva_format
 * g++ -O3 -DNDEBUG -o evaluate_object evaluate_object.cpp
+* python cal_ap.py ../../../results/yolo_Nov_4_rf/plot
 
 ## Yolo
 * Nov_4: directly use provided model to make prediction on the whole training set, [result](results/yolo_Nov_4_rf/plot/)

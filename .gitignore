@@ -16,6 +16,7 @@
 
 results/
 !results/yolo_Nov_4_rf/plot/*.pdf
+!results/yolo_Nov_4_rf/plot/ap.txt
 
 data/
 
