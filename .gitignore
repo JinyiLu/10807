@@ -12,9 +12,12 @@
 
 *.pyc
 
+.DS_Store
+
+results/
+!results/yolo_Nov_4_rf/plot/*.pdf
+
 data/
 
 code/scripts/eva/data/
 code/scripts/eva/results/
-results/
-!results/yolo_Nov_4_rf/plot/*.pdf
