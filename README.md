@@ -4,7 +4,7 @@
 * git clone https://JinyiLu@github.com/JinyiLu/10807.git
 * ./darknet yolo valid cfg/tiny-yolo.cfg tiny-yolo.weights
 * ./darknet yolo valid cfg/yolo.cfg yolo.weights
-* python yolo_toeva.py ../../../data/yolo/results_Nov_4 ../../../data/yolo/results_Nov_4_eva_format
+* python yolo_to_eva.py ../../../data/yolo/results_Nov_4 ../../../data/yolo/results_Nov_4_eva_format
 * g++ -O3 -DNDEBUG -o evaluate_object evaluate_object.cpp
 
 ## Yolo
