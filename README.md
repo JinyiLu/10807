@@ -1,6 +1,6 @@
 # 10-807 Team Project
 
-##
+## Commands
 * git clone https://JinyiLu@github.com/JinyiLu/10807.git
 * ./darknet yolo valid cfg/tiny-yolo.cfg tiny-yolo.weights
 * ./darknet yolo valid cfg/yolo.cfg yolo.weights
