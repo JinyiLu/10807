@@ -81,3 +81,4 @@ nvidia-smi
 * https://github.com/rbgirshick/py-faster-rcnn
 * https://github.com/rbgirshick/py-faster-rcnn/issues/129
 * https://github.com/BVLC/caffe/issues/861
+* https://github.com/rbgirshick/py-faster-rcnn/issues/237
