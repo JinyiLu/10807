@@ -8,20 +8,8 @@
 * g++ -O3 -DNDEBUG -o evaluate_object evaluate_object.cpp
 * python cal_ap.py ../../../results/yolo_Nov_4_rf/plot
 
-### GPU Instances
-* sudo apt-get update
-* sudo apt-get upgrade
-* wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1404/x86_64/cuda-repo-ubuntu1404_7.5-18_amd64.deb
-* sudo dpkg -i cuda-repo-ubuntu1404_7.5-18_amd64.deb
-* sudo apt-get update
-* sudo apt-get install cuda
-* https://github.com/BVLC/caffe/wiki/Caffe-on-EC2-Ubuntu-14.04-Cuda-7
-
 ## Faster-RCNN
-### On AWS
-* sudo apt-get install python-opencv
-
-* py-faster-rcnn - ami-a9ac2abe
+* [Install on AWS](InstallFRCNN.md)
 
 ## Yolo
 * Nov_4: directly use provided model to make prediction on the whole training set, [result](results/yolo_Nov_4_rf/plot/)
