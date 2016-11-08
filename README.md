@@ -8,6 +8,21 @@
 * g++ -O3 -DNDEBUG -o evaluate_object evaluate_object.cpp
 * python cal_ap.py ../../../results/yolo_Nov_4_rf/plot
 
+### GPU Instances
+* sudo apt-get update
+* sudo apt-get upgrade
+* wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1404/x86_64/cuda-repo-ubuntu1404_7.5-18_amd64.deb
+* sudo dpkg -i cuda-repo-ubuntu1404_7.5-18_amd64.deb
+* sudo apt-get update
+* sudo apt-get install cuda
+* https://github.com/BVLC/caffe/wiki/Caffe-on-EC2-Ubuntu-14.04-Cuda-7
+
+## Faster-RCNN
+### On AWS
+* sudo apt-get install python-opencv
+
+* py-faster-rcnn - ami-a9ac2abe
+
 ## Yolo
 * Nov_4: directly use provided model to make prediction on the whole training set, [result](results/yolo_Nov_4_rf/plot/)
 
@@ -18,3 +33,11 @@
 * [PASCAL VOC2012](http://host.robots.ox.ac.uk/pascal/VOC/voc2012/htmldoc/devkit_doc.html#SECTION00050000000000000000)
 * https://www.bittiger.io/competition
 * [KITTI](http://www.cvlibs.net/datasets/kitti/eval_object.php)
+* [Faster-RCNN](https://github.com/rbgirshick/py-faster-rcnn)
+* http://www.itdadao.com/articles/c15a253094p0.html
+* https://developer.nvidia.com/cuda-downloads
+* https://developer.nvidia.com/cuda-75-downloads-archive
+* http://caffe.berkeleyvision.org/install_apt.html
+* https://developer.nvidia.com/cuda-75-downloads-archive
+* https://github.com/BVLC/caffe/wiki/Caffe-on-EC2-Ubuntu-14.04-Cuda-7
+* https://github.com/rbgirshick/py-faster-rcnn/issues/237
