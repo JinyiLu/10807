@@ -1,8 +1,8 @@
 # Install Faster R-CNN on AWS
 
-## 
+## Software Version
 * CUDA 7.5
-* cuDNN
+* cuDNN 4.0
 * Caffe
 * openCV
 
