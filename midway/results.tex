@@ -1,7 +1,75 @@
 \section{Results}
 
 \subsection{Object Detection Using Yolo}
+\begin{figure}[H]
+\begin{subfigure}{.5\textwidth}
+    \centering
+    \includegraphics[width=1.0\linewidth]{img/yolo_Nov_4/plot_valid/car_detection.eps}
+    % \caption{Seed = 4}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+    \centering
+    \includegraphics[width=1.0\linewidth]{img/yolo_Nov_4/plot_valid/pedestrian_detection.eps}
+    % \caption{Seed = 4}
+\end{subfigure}
+\caption{Using a Pre-Trained Yolo Model}
+\end{figure}
 
+\begin{figure}[H]
+\begin{subfigure}{.5\textwidth}
+    \centering
+    \includegraphics[width=1.0\linewidth]{img/yolo_Nov_9/plot_valid/car_detection.eps}
+    % \caption{Seed = 4}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+    \centering
+    \includegraphics[width=1.0\linewidth]{img/yolo_Nov_9/plot_valid/pedestrian_detection.eps}
+    % \caption{Seed = 4}
+\end{subfigure}
+\caption{Using a Tiny Yolo Model Trained on Our Dataset}
+\end{figure}
 
 
 \subsection{Object Detection Using Faster-RCNN}
+\begin{figure}[H]
+\begin{subfigure}{.5\textwidth}
+    \centering
+    \includegraphics[width=1.0\linewidth]{img/FRCNN_Nov_8/plot_valid/car_detection.eps}
+    % \caption{Seed = 4}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+    \centering
+    \includegraphics[width=1.0\linewidth]{img/FRCNN_Nov_8/plot_valid/pedestrian_detection.eps}
+    % \caption{Seed = 4}
+\end{subfigure}
+\caption{Using a Pre-Trained Faster-RCNN Model}
+\end{figure}
+
+\subsection{Average Precision}
+\begin{table}[h!]
+\centering
+\begin{tabular}{ c | c | c | c }
+\hline
+Method & Easy & Moderate & Hard \\
+\hline \hline
+Pre-Trained Yolo & 0.204438 & 0.155358 & 0.145101 \\
+Yolo Tiny & 0.344293 & 0.291823 & \bfseries 0.257863 \\
+Pre-Trained Faster-RCNN & \bfseries 0.522754 & \bfseries 0.309875 & 0.248554 \\
+\hline
+\end{tabular}
+\caption{AP on Car Detection}
+\end{table}
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{ c | c | c | c }
+\hline
+Method & Easy & Moderate & Hard \\
+\hline \hline
+Pre-Trained Yolo & 0.197457 & 0.183323 & 0.175022 \\
+Yolo Tiny & 0.187898 & 0.184558 & 0.176187 \\
+Pre-Trained Faster-RCNN & \bfseries 0.498992 & \bfseries 0.429862 & \bfseries 0.377569 \\
+\hline
+\end{tabular}
+\caption{AP on Pedestrian Detection}
+\end{table}

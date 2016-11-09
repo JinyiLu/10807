@@ -10,6 +10,7 @@
 
 ## Yolo
 * Nov_4: directly use provided model to make prediction on the whole training set, [result](results/yolo_Nov_4_rf/)
+* Nov_9: train on training set, yolo tiny, [result](results/yolo_Nov_9_rf/)
 
 ## Faster-RCNN
 * [Install on AWS](InstallFRCNN.md)
