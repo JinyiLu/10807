@@ -1,6 +1,32 @@
-\section{Results}
+\section{Preliminary Results}
 
-\subsection{Object Detection Using Yolo}
+In this section, we will discuss some of our preliminary results. 
+We first randomly split all 7841 labeled images into two parts: 
+training set (4953 images) and validation set (2538 images). 
+For now, we have conducted three experiments on object detection, including using a pre-trained yolo model, using a re-trained tiny yolo model based on our training set and using a pre-trained Faster-RCNN model.
+
+In terms of evaluating the object detection results, KITTI benchmark requires a minimum overlap of 70\% for cars and 50\% for pedestrians. It also has three kinds of difficulties: easy, moderate and hard. Difficulties are defined as follows:
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{ c | c | c | c }
+\hline
+Difficulty & Min. bounding box height & Max. occlusion level & Max. truncation \\
+\hline \hline
+Easy & 40 Px & Fully visible & 15\% \\
+Moderate & 25 Px & Partly occluded & 30\% \\
+Hard & 25 Px & Difficult to see & 50\% \\
+\hline
+\end{tabular}
+\caption{Different Difficulties Requirements}
+\end{table}
+
+The pre-trained yolo model is trained on Pascal VOC 2012 and 2007 dataset \footnote{\url{http://pjreddie.com/darknet/yolo/}}. It supports about 20 object categories including car and people (corresponding to pedestrian). However it don't support cyclist category. So in all the following experiments, we only evaluate the performance for cars and pedestrians.
+
+\JY{re-trained tiny yolo}
+
+The pre-trained Faster-RCNN model is trained on Pascal VOC 2007 dataset \footnote{\url{https://github.com/rbgirshick/py-faster-rcnn}}. It is able to detect cars and pedestrians and also lacks of supports for cyclists.
+
 \begin{figure}[H]
 \begin{subfigure}{.5\textwidth}
     \centering
@@ -13,9 +39,6 @@
     % \caption{Seed = 4}
 \end{subfigure}
 \caption{Using a Pre-Trained Yolo Model}
-\end{figure}
-
-\begin{figure}[H]
 \begin{subfigure}{.5\textwidth}
     \centering
     \includegraphics[width=1.0\linewidth]{img/yolo_Nov_9/plot_valid/car_detection.eps}
@@ -27,11 +50,6 @@
     % \caption{Seed = 4}
 \end{subfigure}
 \caption{Using a Tiny Yolo Model Trained on Our Dataset}
-\end{figure}
-
-
-\subsection{Object Detection Using Faster-RCNN}
-\begin{figure}[H]
 \begin{subfigure}{.5\textwidth}
     \centering
     \includegraphics[width=1.0\linewidth]{img/FRCNN_Nov_8/plot_valid/car_detection.eps}
@@ -45,7 +63,7 @@
 \caption{Using a Pre-Trained Faster-RCNN Model}
 \end{figure}
 
-\subsection{Average Precision}
+
 \begin{table}[h!]
 \centering
 \begin{tabular}{ c | c | c | c }
@@ -53,11 +71,11 @@
 Method & Easy & Moderate & Hard \\
 \hline \hline
 Pre-Trained Yolo & 0.204438 & 0.155358 & 0.145101 \\
-Yolo Tiny & 0.344293 & 0.291823 & \bfseries 0.257863 \\
+Tiny Yolo & 0.344293 & 0.291823 & \bfseries 0.257863 \\
 Pre-Trained Faster-RCNN & \bfseries 0.522754 & \bfseries 0.309875 & 0.248554 \\
 \hline
 \end{tabular}
-\caption{AP on Car Detection}
+\caption{Average Precision on Car Detection}
 \end{table}
 
 \begin{table}[h!]
@@ -67,9 +85,11 @@ Pre-Trained Faster-RCNN & \bfseries 0.522754 & \bfseries 0.309875 & 0.248554 \\
 Method & Easy & Moderate & Hard \\
 \hline \hline
 Pre-Trained Yolo & 0.197457 & 0.183323 & 0.175022 \\
-Yolo Tiny & 0.187898 & 0.184558 & 0.176187 \\
+Tiny Yolo & 0.187898 & 0.184558 & 0.176187 \\
 Pre-Trained Faster-RCNN & \bfseries 0.498992 & \bfseries 0.429862 & \bfseries 0.377569 \\
 \hline
 \end{tabular}
-\caption{AP on Pedestrian Detection}
+\caption{Average Precision on Pedestrian Detection}
 \end{table}
+
+As we can see from the precision-recall curve and the average precision results. For pedestrians, Faster-RCNN outperforms yolo models a lot in all three difficulity levels. And a re-trained tiny yolo model on our dataset shows no improvement compare to the pre-trained yolo model. For cars, Faster-RCNN outperforms yolo models in easy level. And our re-trained tiny yolo model shows great improvement in all three difficulity levels compare with the pre-traiend yolo model.
