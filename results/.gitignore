@@ -3,3 +3,4 @@
 !.gitignore
 !ap.txt
 !*.pdf
+!nohup.out

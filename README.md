@@ -4,8 +4,11 @@
 * git clone https://JinyiLu@github.com/JinyiLu/10807.git
 * ./darknet yolo valid cfg/tiny-yolo.cfg tiny-yolo.weights
 * ./darknet yolo valid cfg/yolo.cfg yolo.weights
-* python yolo_to_eva.py ../../../data/yolo/results_Nov_4 ../../../data/yolo/results_Nov_4_eva_format
+
+## Evaluation
 * g++ -O3 -DNDEBUG -o evaluate_object evaluate_object.cpp
+* python yolo_to_eva.py ../../../data/yolo/results_Nov_4 ../../../data/yolo/results_Nov_4_eva_format
+* ./evaluate_object 7481 FRCNN_Nov_8_rf
 * python cal_ap.py ../../../results/yolo_Nov_4_rf/plot
 
 ## Yolo
@@ -13,6 +16,8 @@
 
 ## Faster-RCNN
 * [Install on AWS](InstallFRCNN.md)
+* Nov_8: directly use provided model
+    * ~ 57 min for 7481 images (prediction) on g2.2xlarge
 
 
 ## References
