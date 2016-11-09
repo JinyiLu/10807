@@ -6,6 +6,7 @@
 #include <numeric>
 #include <strings.h>
 #include <assert.h>
+#include <unordered_set>
 
 #include "mail.h"
 
@@ -36,8 +37,15 @@ const double   MIN_OVERLAP[3] = {0.7, 0.5, 0.5};                  // the minimum
 // no. of recall steps that should be evaluated (discretized)
 const double N_SAMPLE_PTS = 41;
 
-const string dev_mask = "data/train.txt"
-const string val_mask = "data/valid.txt"
+const string dev_mask = "data/train.txt";
+const string val_mask = "data/valid.txt";
+unordered_set<int> dev_set;
+unordered_set<int> val_set;
+
+const int TRAIN = 1;
+const int VALID = 2;
+
+int dataset_mask = TRAIN;
 
 // initialize class names
 void initGlobals () {
@@ -97,6 +105,30 @@ struct tDetection {
   tDetection (string type,double x1,double y1,double x2,double y2,double alpha,double thresh) :
     box(tBox(type,x1,y1,x2,y2,alpha)),thresh(thresh) {}
 };
+
+bool pass_mask(int img_id){
+    // fprintf(stderr, "%d %d\n", dataset_mask, img_id);
+    if (dataset_mask == TRAIN){
+      if (dev_set.count(img_id) <= 0){
+        return false;
+      }
+      else{
+        return true;
+      }
+    }
+    else if (dataset_mask == VALID){
+      if (val_set.count(img_id) <= 0){
+        return false;
+      }
+      else{
+        return true;
+      }
+    } 
+    else{
+      return true;
+    }
+}
+
 
 /*=======================================================================
 FUNCTIONS TO LOAD DETECTION AND GROUND TRUTH DATA ONCE, SAVE RESULTS
@@ -501,7 +533,8 @@ bool eval_class (FILE *fp_det, FILE *fp_ori, CLASSES current_class,const vector<
   vector< vector<tGroundtruth> > dontcare;            // index of dontcare areas, included in ground truth
 
   // for all test images do
-  for (int32_t i=0; i<N_TESTIMAGES; i++){
+  for (int32_t i=0; i<groundtruth.size(); i++){
+
 
     // holds ignored ground truth, ignored detections and dontcare areas for current frame
     vector<int32_t> i_gt, i_det;
@@ -528,7 +561,7 @@ bool eval_class (FILE *fp_det, FILE *fp_ori, CLASSES current_class,const vector<
   // compute TP,FP,FN for relevant scores
   vector<tPrData> pr;
   pr.assign(thresholds.size(),tPrData());
-  for (int32_t i=0; i<N_TESTIMAGES; i++){
+  for (int32_t i=0; i<groundtruth.size(); i++){
 
     // for all scores/recall thresholds do:
     for(int32_t t=0; t<thresholds.size(); t++){
@@ -642,6 +675,12 @@ bool eval(string result_sha,Mail* mail){
   string gt_dir         = "data/object/label_2";
   string result_dir     = "results/" + result_sha;
   string plot_dir       = result_dir + "/plot";
+  if (dataset_mask == TRAIN){
+    plot_dir += "_train";
+  }
+  else if (dataset_mask == VALID){
+    plot_dir += "_valid";
+  }
 
   // create output directories
   system(("mkdir " + plot_dir).c_str());
@@ -657,6 +696,9 @@ bool eval(string result_sha,Mail* mail){
   // for all images read groundtruth and detections
   mail->msg("Loading detections...");
   for (int32_t i=0; i<N_TESTIMAGES; i++) {
+    if (! pass_mask(i)){
+      continue;
+    }
 
     // file name
     char file_name[256];
@@ -708,6 +750,8 @@ bool eval(string result_sha,Mail* mail){
     }
   }
 
+  fprintf(stderr, "eval car finish\n");
+
   // eval pedestrians
   if(eval_pedestrian){
     fp_det = fopen((result_dir + "/stats_" + CLASS_NAMES[PEDESTRIAN] + "_detection.txt").c_str(),"w");
@@ -727,7 +771,7 @@ bool eval(string result_sha,Mail* mail){
       saveAndPlotPlots(plot_dir,CLASS_NAMES[PEDESTRIAN] + "_orientation",CLASS_NAMES[PEDESTRIAN],aos,1);
     }
   }
-
+  fprintf(stderr, "eval pedestrians finish\n");
   // eval cyclists
   if(eval_cyclist){
     fp_det = fopen((result_dir + "/stats_" + CLASS_NAMES[CYCLIST]  + "_detection.txt").c_str(),"w");
@@ -748,9 +792,35 @@ bool eval(string result_sha,Mail* mail){
     }
   }
 
+  fprintf(stderr, "eval cyclists finish\n");
+
   // success
   return true;
 }
+
+void load_mask(){
+  FILE *fp = fopen(dev_mask.c_str(),"r");
+  while (!feof(fp)) {
+    int id;
+    if (fscanf(fp, "%d.png", &id) == 1){
+      // cout << id;
+      dev_set.insert(id);
+    }
+  }
+  fclose(fp);
+
+  fp = fopen(val_mask.c_str(),"r");
+  while (!feof(fp)) {
+    int id;
+    if (fscanf(fp, "%d.png", &id) == 1){
+      // cout << id;
+      val_set.insert(id);
+    }
+  }
+  fclose(fp);  
+
+}
+
 
 int32_t main (int32_t argc,char *argv[]) {
   // we need 2 or 4 arguments!
@@ -758,10 +828,14 @@ int32_t main (int32_t argc,char *argv[]) {
     cout << "Usage: ./eval_detection n_testimages result_sha [user_sha email]" << endl;
     return 1;
   }
+  load_mask();
+  fprintf(stderr, "dev mask size %lu\n", dev_set.size());
+  fprintf(stderr, "val mask size %lu\n", val_set.size());
 
   // read arguments
   string result_sha = argv[2];
-  N_TESTIMAGES = atoi(argv[1]);
+  // N_TESTIMAGES = atoi(argv[1]);
+  dataset_mask = atoi(argv[1]);
 
   // init notification mail
   Mail *mail;
