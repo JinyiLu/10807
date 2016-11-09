@@ -87,17 +87,17 @@ def demo(net, image_name):
            '{:d} object proposals').format(timer.total_time, boxes.shape[0])
 
     # Visualize detections for each class
-    CONF_THRESH = 0.8
-    NMS_THRESH = 0.3
-    for cls_ind, cls in enumerate(CLASSES[1:]):
-        cls_ind += 1 # because we skipped background
-        cls_boxes = boxes[:, 4*cls_ind:4*(cls_ind + 1)]
-        cls_scores = scores[:, cls_ind]
-        dets = np.hstack((cls_boxes,
-                          cls_scores[:, np.newaxis])).astype(np.float32)
-        keep = nms(dets, NMS_THRESH)
-        dets = dets[keep, :]
-        vis_detections(im, cls, dets, thresh=CONF_THRESH)
+    # CONF_THRESH = 0.8
+    # NMS_THRESH = 0.3
+    # for cls_ind, cls in enumerate(CLASSES[1:]):
+    #     cls_ind += 1 # because we skipped background
+    #     cls_boxes = boxes[:, 4*cls_ind:4*(cls_ind + 1)]
+    #     cls_scores = scores[:, cls_ind]
+    #     dets = np.hstack((cls_boxes,
+    #                       cls_scores[:, np.newaxis])).astype(np.float32)
+    #     keep = nms(dets, NMS_THRESH)
+    #     dets = dets[keep, :]
+    #     vis_detections(im, cls, dets, thresh=CONF_THRESH)
     return scores, boxes
 
 def parse_args():
@@ -114,6 +114,42 @@ def parse_args():
     args = parser.parse_args()
 
     return args
+
+def save_pred_result(scores, boxes, f_name):
+    f = open(f_name, 'w')
+    trash = 0.0
+    alpha = 0.0
+    NMS_THRESH = 0.3
+    for cls_ind, cls in enumerate(CLASSES[1:]):
+        if cls not in ['person', 'bicycle', 'car']:
+            continue
+        if cls == 'bicycle':
+            category = 'cyclist'
+        elif cls == 'person':
+            category = 'pedestrian'
+        elif cls == 'car':
+            category = 'car'
+        else:
+            category = cls
+
+        cls_ind += 1 # because we skipped background
+        cls_boxes = boxes[:, 4*cls_ind:4*(cls_ind + 1)]
+        cls_scores = scores[:, cls_ind]
+        dets = np.hstack((cls_boxes,
+                          cls_scores[:, np.newaxis])).astype(np.float32)
+
+        keep = nms(dets, NMS_THRESH)
+        dets = dets[keep, :]
+
+
+        for i in range(dets.shape[0]):
+            re = '%s %s %s %s %s %s %s %s %s %s %s %s %s %s %s %s' % \
+            (category, trash, trash, alpha, dets[i,0], dets[i,1], dets[i,2], \
+                dets[i,3], trash, trash, trash, trash, trash, trash, trash, dets[i,4])
+            f.write(re+'\n')
+    f.close()
+
+
 
 if __name__ == '__main__':
     cfg.TEST.HAS_RPN = True  # Use RPN for proposals
@@ -147,11 +183,13 @@ if __name__ == '__main__':
     # im_names = ['000000.png']
     # for im_name in im_names:
     for im_name in os.listdir('data/demo/'):
-        if !im_name.endswith('.png'):
+        if not im_name.endswith('.png'):
             continue
         print '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
         print 'Demo for data/demo/{}'.format(im_name)
-        print demo(net, im_name)
-        plt.savefig('pred_'+im_name)
+        scores, boxes = demo(net, im_name)
+        save_pred_result(scores, boxes, 'pred_re/'+im_name.replace('png', 'txt'))
+
+        # plt.savefig('pred_img/pred_'+im_name)
 
     # plt.show()
