@@ -44,9 +44,14 @@ if __name__ == "__main__":
 
     prefix = 'comp4_det_test_'
 
+    # yolo_Nov_4
+    # categories = {'car':yolo_results_dir+'/'+prefix+'car.txt',\
+    # 'cyclist':yolo_results_dir+'/'+prefix+'bicycle.txt',\
+    # 'pedestrian':yolo_results_dir+'/'+prefix+'person.txt'}
+
+    # yolo_Nov_9
     categories = {'car':yolo_results_dir+'/'+prefix+'car.txt',\
-    'cyclist':yolo_results_dir+'/'+prefix+'bicycle.txt',\
-    'pedestrian':yolo_results_dir+'/'+prefix+'person.txt'}
+    'pedestrian':yolo_results_dir+'/'+prefix+'pedestrian.txt'}
 
     for category in categories:
         load_from_file(categories[category], category, results)
