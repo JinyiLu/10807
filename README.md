@@ -18,6 +18,7 @@
 * [Install on AWS](InstallFRCNN.md)
 * Nov_8: directly use provided model
     * ~ 57 min for 7481 images (prediction) on g2.2xlarge
+    * [result](results/FRCNN_Nov_8_rf/plot/)
 
 
 ## References
