@@ -20,6 +20,9 @@
     * ~ 57 min for 7481 images (prediction) on g2.2xlarge
     * [result](results/FRCNN_Nov_8_rf/plot/)
 
+## Document
+* [Proposal](proposal/proposal10807.pdf)
+* [Midway Report](midway/midwayreport.pdf)
 
 ## References
 * [KITTI](http://www.cvlibs.net/datasets/kitti/eval_object.php)
