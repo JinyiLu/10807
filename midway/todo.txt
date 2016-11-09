@@ -1,0 +1,4 @@
+1. intro to yolo
+2. primary result using yolo and Faster RCNN
+3. some dataset statistics
+4. future plan

@@ -36,6 +36,9 @@ const double   MIN_OVERLAP[3] = {0.7, 0.5, 0.5};                  // the minimum
 // no. of recall steps that should be evaluated (discretized)
 const double N_SAMPLE_PTS = 41;
 
+const string dev_mask = "data/train.txt"
+const string val_mask = "data/valid.txt"
+
 // initialize class names
 void initGlobals () {
   CLASS_NAMES.push_back("car");
