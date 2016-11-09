@@ -9,13 +9,13 @@
 * [How to evaluate](Evaluation.md)
 
 ## Yolo
-* Nov_4: directly use provided model to make prediction on the whole training set, [result](results/yolo_Nov_4_rf/plot/)
+* Nov_4: directly use provided model to make prediction on the whole training set, [result](results/yolo_Nov_4_rf/)
 
 ## Faster-RCNN
 * [Install on AWS](InstallFRCNN.md)
 * Nov_8: directly use provided model
     * ~ 57 min for 7481 images (prediction) on g2.2xlarge
-    * [result](results/FRCNN_Nov_8_rf/plot/)
+    * [result](results/FRCNN_Nov_8_rf/)
 
 ## Document
 * [Proposal](proposal/proposal10807.pdf)
