@@ -144,8 +144,11 @@ if __name__ == '__main__':
     for i in xrange(2):
         _, _= im_detect(net, im)
 
-    im_names = ['000000.png']
-    for im_name in im_names:
+    # im_names = ['000000.png']
+    # for im_name in im_names:
+    for im_name in os.listdir('data/demo/'):
+        if !im_name.endswith('.png'):
+            continue
         print '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
         print 'Demo for data/demo/{}'.format(im_name)
         print demo(net, im_name)
