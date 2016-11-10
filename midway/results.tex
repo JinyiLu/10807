@@ -23,7 +23,6 @@ Hard & 25 Px & Difficult to see & 50\% \\
 
 The pre-trained yolo model is trained on Pascal VOC 2012 and 2007 dataset \footnote{\url{http://pjreddie.com/darknet/yolo/}}. It supports about 20 object categories including car and people (corresponding to pedestrian). However it don't support cyclist category. So in all the following experiments, we only evaluate the performance for cars and pedestrians.
 
-\JY{fine-tuned tiny yolo}
 For now, we only detect cars and pedestrians in images. Considering the limitation of time and compute power, we choose the tiny yolo model to fast tune. Tiny yolo model is very similar to yolo model, but only contains 8 convolutional layers. We use convolutional weights that are pre-trained on ImageNet classification task as initial weights. Fine tuning tiny yolo model makes it possible to benefit from the features the model has learnt previously and speed up training. It took about 16 hours to train tiny yolo after 10,000 iterations.
 
 
