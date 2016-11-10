@@ -14,12 +14,6 @@ This paper\cite {fast-rcnn} talked about how to train a detection network faster
 
 This paper proposed to modify R-CNN’s architecture by taking an image and multiple regions of interests as input. Region proposal method usually depends on Selective Search. Each region of interest is pooled into a fixed-size feature map and fully connected layers are used to extract features. There two output vectors: softmax probabilities and per-class bounding-box regression offsets.The second one is to reduce mislocalization.
 
-\subsection{Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks}
-Fast-CNN achieves near real-time rates using very deep networks, when ignoring the time spent on region proposals. Select Search takes about 2 seconds per image on the CPU. Faster R-CNN\cite {faster-rcnn} adds a fully convolutional network to compute region proposals directly. Then use the same detector on the proposed regions as what Fast R-CNN does. 
-
-\JY{
-\subsection{Yolo}
-}
 
 
 
