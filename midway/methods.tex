@@ -3,7 +3,7 @@
 % One way is using region proposal and region-based convolutional neural networks to make classification on different region proposals, such as R-CNN, Fast R-CNN, SPPnet, and Faster R-CNN, etc. Another way is 
 
 \subsection{You Only Look Once (yolo)}
-Yolo is a real-time object recognition algorithm. Unlike sliding window and region proposal-based techniques, it trains on full images and reframes object detection as a single regression problem.The yolo system firstly resizes images to 448*448, then runs a single convolutional network, and predicts multiple bounding boxes and class probabilities for those boxes. It only looks at images once, unlike R-CNN which require thousands for a single image. This makes yolo extremely fast, more than 1000x faster than R-CNN and 100x faster than Fast R-CNN. 
+Yolo is a real-time object recognition algorithm \cite{yolo}. Unlike sliding window and region proposal-based techniques, it trains on full images and reframes object detection as a single regression problem.The yolo system firstly resizes images to 448*448, then runs a single convolutional network, and predicts multiple bounding boxes and class probabilities for those boxes. It only looks at images once, unlike R-CNN which require thousands for a single image. This makes yolo extremely fast, more than 1000x faster than R-CNN and 100x faster than Fast R-CNN. 
 
 Yolo system divides an image into S × S grid. Each grid cell predicts B bounding boxes and C conditional class probabilities. Each bounding box contains 5 predictions: x, y, w, h, and confidence score. So the final prediction is a S × S × (B * 5 + C) sensor.
 
