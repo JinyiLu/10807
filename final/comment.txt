@@ -1,0 +1,1 @@
+A small subset of data is good for comparison of models in this case. Since you have two models working already, next step could be to figure out the differences between the two models and the factors that lead to different performance. e.g. how much does the region-proposal in RPN help, how important is the network size, etc.

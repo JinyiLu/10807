@@ -37,8 +37,9 @@ const double   MIN_OVERLAP[3] = {0.7, 0.5, 0.5};                  // the minimum
 // no. of recall steps that should be evaluated (discretized)
 const double N_SAMPLE_PTS = 41;
 
-const string dev_mask = "data/train.txt";
-const string val_mask = "data/valid.txt";
+const string dev_mask = "data/train_30_mask.txt";
+const string val_mask = "data/valid_30_mask.txt";
+const string suffix = "_30";
 unordered_set<int> dev_set;
 unordered_set<int> val_set;
 
@@ -676,10 +677,10 @@ bool eval(string result_sha,Mail* mail){
   string result_dir     = "results/" + result_sha;
   string plot_dir       = result_dir + "/plot";
   if (dataset_mask == TRAIN){
-    plot_dir += "_train";
+    plot_dir += "_train" + suffix;
   }
   else if (dataset_mask == VALID){
-    plot_dir += "_valid";
+    plot_dir += "_valid" + suffix;
   }
 
   // create output directories

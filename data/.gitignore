@@ -3,3 +3,5 @@
 !.gitignore
 !train.txt
 !valid.txt
+!train_m.txt
+!train_s.txt
