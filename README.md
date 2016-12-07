@@ -8,6 +8,9 @@
 ## Evaluation
 * [How to evaluate](Evaluation.md)
 
+## Visualization
+* [Netscope](http://ethereon.github.io/netscope/quickstart.html)
+
 ## Yolo
 * Nov_4: directly use provided model to make prediction on the whole training set, [result](results/yolo_Nov_4_rf/)
 * Nov_9: train on training set, yolo tiny, [result](results/yolo_Nov_9_rf/)
@@ -34,3 +37,4 @@
 * [CUDA](https://developer.nvidia.com/cuda-downloads)
 * [CUDA 7.5](https://developer.nvidia.com/cuda-75-downloads-archive)
 * [Caffe](http://caffe.berkeleyvision.org/install_apt.html)
+* [Convolutional Networks](http://cs231n.github.io/convolutional-networks/#case)

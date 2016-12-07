@@ -1,0 +1,8 @@
+f car_detection.txt
+Easy 0.721039	Moderate 0.596753	Hard 0.479783
+f car_orientation.txt
+Easy 0.320874	Moderate 0.256756	Hard 0.202586
+f pedestrian_detection.txt
+Easy 0.635249	Moderate 0.556700	Hard 0.520960
+f pedestrian_orientation.txt
+Easy 0.344407	Moderate 0.290863	Hard 0.270662
