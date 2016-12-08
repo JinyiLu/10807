@@ -1,1 +1,10 @@
 \section{\JY{Discuss}}
+
+For now, we only detect cars and pedestrians in images. Considering the limitation of time and compute power, we choose the tiny yolo model to fast tune. Tiny yolo model is very similar to yolo model, but only contains 8 convolutional layers. We use convolutional weights that are pre-trained on ImageNet classification task as initial weights. Fine tuning tiny yolo model makes it possible to benefit from the features the model has learnt previously and speed up training. It took about 16 hours to train tiny yolo after 10,000 iterations.
+
+
+
+
+
+As we can see from the precision-recall curve and the average precision results, for pedestrians, Faster-RCNN outperforms yolo models a lot in all three difficulty levels. And a fine-tuned tiny yolo model on our dataset shows no improvement compared with the pre-trained yolo model. For cars, Faster-RCNN outperforms yolo models in easy level. And our fine-tuned tiny yolo model shows great improvement in all three difficulty levels compared with the pre-traiend yolo model. And
+in terms of predicting speed, the fine-tuned tiny yolo can achieve about 70 fps and the pre-trained Faster-RCNN can only achieve about 2 fps.
