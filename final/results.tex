@@ -43,7 +43,7 @@ Pedestrians & 0.5998 & 0.6630\\
 
 Previously, we have conducted two experiments on the whole dataset,
 including using a pre-trained yolo model,
-and using a pre-trained Faster-RCNN model. All the experiments are conducted on AWS using a g2.2xlarge instance with GRID K520 GPU. We directly use the Yolo implementation from Darknet \footnote{\url{https://github.com/pjreddie/darknet.git}} and the Faster R-CNN python implementation \footnote{\url{https://github.com/rbgirshick/py-faster-rcnn}}.
+and using a pre-trained Faster-RCNN model. All the experiments are conducted on AWS using a p2.xlarge instance with Tesla K80 GPU. We directly use the Yolo implementation from Darknet \footnote{\url{https://github.com/pjreddie/darknet.git}} and the Faster R-CNN python implementation \footnote{\url{https://github.com/rbgirshick/py-faster-rcnn}}.
 
 The pre-trained yolo model is trained on Pascal VOC 2012 and 2007 dataset \footnote{\url{http://pjreddie.com/darknet/yolo/}}. It supports about 20 object categories including car and people (corresponding to pedestrian). However it don't support cyclist category. So in all the following experiments, we only evaluate the performance for cars and pedestrians.
 
@@ -139,7 +139,7 @@ As we can see, the performance of those two models doesnt' have
 significant difference on the subset compare with the whole set. 
 So in all the following experiments, we only work on the subset.
 
-\subsection{Convergence of Different Models}
+\subsection{Convergence Properties of Different Models}
 We build four fine-tuned models, which are
 tiny yolo, big yolo, Faster R-CNN using ZFnet and 
 Faster-RCNN using VGG\textunderscore CNN\textunderscore M\textunderscore 1024 \cite{chatfield2014return}.
@@ -178,9 +178,31 @@ changes with iterations.
 \caption{Convergence Properties of Faster R-CNN}
 \end{figure}
 
+As we can see, all the models are very hard to converge even 
+with their carefully designed adapting learning rates. 
 
-\subsection{Fine-Tuned Models with Different Network Size}
-\JY{Different network architecture}
+
+\subsection{Fine-Tuned Models with Different Network Structure}
+In this experiments, we test four different models which has 
+different network structure.
+A tiny yolo model is a simplified version of the big yolo model 
+by reducing 16 convolutional layers for generating features. 
+And the difference between two Faster R-CNN models
+is using which convolutional networks for generating feature map,
+one is ZFnet \cite{zeiler2014visualizing} and the other one is VGG\textunderscore CNN\textunderscore M\textunderscore 1024 \cite{chatfield2014return}. These two convolutional networks 
+are quite similar and the main difference is that 
+VGG\textunderscore CNN\textunderscore M\textunderscore 1024 
+is wider than ZFnet.
+
+We use convolutional weights that are pre-trained on ImageNet classification task as initial weights. Fine tuning models make it possible to benefit from the features the model has learnt previously and speed up training. 
+
+It took about 5 hours to train a tiny yolo after 5,000 iterations
+and 15 hours to train a big yolo after 5,000 iterations.
+For Faster R-CNN, the one using ZFnet took about 16 hours after 
+80,000 iterations and the one using VGG\textunderscore CNN\textunderscore M\textunderscore 1024
+took about 12 hours after 80,000 iterations.
+
+
 
 \begin{figure}[h!]
 \centering
