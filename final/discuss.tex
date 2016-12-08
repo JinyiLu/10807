@@ -1,15 +1,15 @@
 \section{Discuss}
 In terms of the model performance, we use the two pre-trained 
 models as the baseline for comparsion.
-As we can see from the precision-recall curve and the average precision results, for cars, best result is achieved by 
-using a Find-tuned Faster R-CNN models and there is 
+As we can see from the precision-recall curve and the average precision results, for cars, the best result is achieved by 
+using the fine-tuned Faster R-CNN models and there is 
 no significant difference between which convolutional networks 
 to be used for generating feature map probability because 
 these two convolutional networks are very similar 
 and have the same depth.
 In terms of yolo, 
 a fine-tuned tiny yolo model don't have a significant 
-improvement compare to the one using the pre-trained model.
+improvement compare to the baseline.
 However, a fine-tuned big yolo mdoel do improve the performance 
 a lot thanks to the deeper network.
 For pedestrian, the performance of models are quite similar,
@@ -17,11 +17,17 @@ fine-tuned Faster R-CNN models achieve the best results.
 And a fine-tuned big yolo model improves the baseline while 
 a fine-tuned tiny yolo model shows no significant improvement.
 
+In terms of the detected object bounding boxes, 
+Faster R-CNN models are very good at automatically predicting the 
+shape of the boxes. However, for yolo models, 
+they fail to predicting correct shape of the boxes 
+especially for pedestrians. It's probabily mainly 
+because of the it's large granularity.
 
 
 It seems hard to strike a balance between speed and accuracy of detection. Yolo is extremely fast on real-time detection because it only requires a single network evaluation. But the detection accuracy is not enough. Yolo only predicts 2 bounding boxes in each grid cell and 98 bounding boxes per image. This imposes strong spatial constraints to limit the number of nearby objects that the model can predict. Yolo performs poorly in detecting small objects, especially in groups. It also struggles to localize objects correctly. The impact of a small error in a small bounding box should weigh more heavily than the impact of a small error in a large bounding. But yolo treats them as the same.
 
 Faster RCNN is another state-of-the-art object-detecting model. It is a high-accuracy detector, outperforming yolo. It benefits from explicit region proposals. But the VGG-CNN-M-1024 version of Faster R-CNN is about 4 times slower than YOLO.
 
-In the future, we would like to increase the speed of real-time detection on KITTI dataset without sacrificing the detection accuracy. We may try other models such as SSD. It's fundamental improvement in speed comes from eliminating bounding box proposals and the subsequent pixel or feature resampling stage. Other modifications include using a small convolutional filter to predict object categories and offsets in bounding box locations, using separate predictors (filters) for different aspect ratio detections, and applying these filters to multiple feature maps from the later stages of a network in order to perform detection at multiple scales. We hope SSD model can improve the detection on KITTI dataset.
+In the future \footnote{Detailed code and future updates can be found at \url{https://github.com/JinyiLu/10807}}, we would like to increase the speed of real-time detection on KITTI dataset without sacrificing the detection accuracy. We may try other models such as SSD. It's fundamental improvement in speed comes from eliminating bounding box proposals and the subsequent pixel or feature resampling stage. Other modifications include using a small convolutional filter to predict object categories and offsets in bounding box locations, using separate predictors (filters) for different aspect ratio detections, and applying these filters to multiple feature maps from the later stages of a network in order to perform detection at multiple scales. We hope SSD model can improve the detection on KITTI dataset.
 
