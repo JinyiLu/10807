@@ -6,3 +6,10 @@
 
 As we can see from the precision-recall curve and the average precision results, for pedestrians, Faster-RCNN outperforms yolo models a lot in all three difficulty levels. And a fine-tuned tiny yolo model on our dataset shows no improvement compared with the pre-trained yolo model. For cars, Faster-RCNN outperforms yolo models in easy level. And our fine-tuned tiny yolo model shows great improvement in all three difficulty levels compared with the pre-traiend yolo model. And
 in terms of predicting speed, the fine-tuned tiny yolo can achieve about 70 fps and the pre-trained Faster-RCNN can only achieve about 2 fps.
+
+
+It seems hard to strike a balance between speed and accuracy of detection. Yolo is extremely fast on real-time detection because it only requires a single network evaluation. But the detection accuracy is not enough. Yolo only predicts 2 bounding boxes in each grid cell and 98 bounding boxes per image. This imposes strong spatial constraints to limit the number of nearby objects that the model can predict. Yolo performs poorly in detecting small objects, especially in groups. It also struggles to localize objects correctly. The impact of a small error in a small bounding box should weigh more heavily than the impact of a small error in a large bounding. But yolo treats them as the same.
+
+Faster RCNN is another state-of-the-art object-detecting model. It is a high-accuracy detector, outperforming yolo. But the VGG-CNN-M-1024 version of Faster R-CNN is about 4 times slower than YOLO.
+
+In the future, we would like to increase speed of real-time detection on KITTI dataset without sacrificing the detection accuracy. 
