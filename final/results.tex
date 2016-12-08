@@ -179,7 +179,7 @@ changes with iterations.
 \end{figure}
 
 
-\subsection{Fine-Tuned Models with Difference Network Size}
+\subsection{Fine-Tuned Models with Different Network Size}
 \JY{Different network architecture}
 
 \begin{figure}[h!]
@@ -305,6 +305,22 @@ Find-Tuned VGG\textunderscore M Yolo & 62.7834 & 100.1970 & 9768.3991 & 3885 \\
 \hline
 \end{tabular}
 \caption{Detected Car Bounding Boxes Comparison}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{ c | c | c | c | c}
+\hline
+Method & Avg Height & Avg Width & Avg Area & cnt \\
+\hline \hline
+\bfseries Ground Truth & \bfseries 103.2774 & \bfseries 43.3553 & \bfseries 6081.0395 & \bfseries 549 \\
+Fine-Tuned Tiny Yolo & 158.6333 & 69.7682 & 12327.1655 & 235 \\
+Fine-Tuned Big Yolo & 132.4591 & 64.1588 & 9822.6585 & 225 \\
+Fine-Tuned ZF Faster R-CNN & 105.9067 & 45.7684 & 6179.3364 & 585 \\
+Find-Tuned VGG\textunderscore M Yolo & 96.6618 & 44.1266 & 5529.7738 & 662 \\
+\hline
+\end{tabular}
+\caption{Detected Precision Bounding Boxes Comparison}
 \end{table}
 
 
