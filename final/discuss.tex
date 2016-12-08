@@ -1,8 +1,18 @@
 \section{Discuss}
-
-
-
-
-
-As we can see from the precision-recall curve and the average precision results, for pedestrians, Faster-RCNN outperforms yolo models a lot in all three difficulty levels. And a fine-tuned tiny yolo model on our dataset shows no improvement compared with the pre-trained yolo model. For cars, Faster-RCNN outperforms yolo models in easy level. And our fine-tuned tiny yolo model shows great improvement in all three difficulty levels compared with the pre-traiend yolo model. And
-in terms of predicting speed, the fine-tuned tiny yolo can achieve about 70 fps and the pre-trained Faster-RCNN can only achieve about 2 fps.
+In terms of the model performance, we use the two pre-trained 
+models as the baseline for comparsion.
+As we can see from the precision-recall curve and the average precision results, for cars, best result is achieved by 
+using a Find-tuned Faster R-CNN models and there is 
+no significant difference between which convolutional networks 
+to be used for generating feature map probability because 
+these two convolutional networks are very similar 
+and have the same depth.
+In terms of yolo, 
+a fine-tuned tiny yolo model don't have a significant 
+improvement compare to the one using the pre-trained model.
+However, a fine-tuned big yolo mdoel do improve the performance 
+a lot thanks to the deeper network.
+For pedestrian, the performance of models are quite similar,
+fine-tuned Faster R-CNN models achieve the best results. 
+And a fine-tuned big yolo model improves the baseline while 
+a fine-tuned tiny yolo model shows no significant improvement.

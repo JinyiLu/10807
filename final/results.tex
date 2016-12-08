@@ -190,7 +190,7 @@ by reducing 16 convolutional layers for generating features.
 And the difference between two Faster R-CNN models
 is using which convolutional networks for generating feature map,
 one is ZFnet \cite{zeiler2014visualizing} and the other one is VGG\textunderscore CNN\textunderscore M\textunderscore 1024 \cite{chatfield2014return}. These two convolutional networks 
-are quite similar and the main difference is that 
+are quite similar except that 
 VGG\textunderscore CNN\textunderscore M\textunderscore 1024 
 is wider than ZFnet.
 
@@ -249,8 +249,8 @@ Pre-Trained Yolo & 0.227639 & 0.172312 & 0.151478 \\
 Fine-Tuned Tiny Yolo & 0.207844 & 0.186021 & 0.181117 \\
 Fine-Tuned Big Yolo & 0.396407 & 0.342113 & 0.322760 \\
 Pre-Trained Faster R-CNN & 0.524807 & 0.308296 & 0.252989 \\
-Fine-Tuned ZF Yolo & \bfseries 0.721690 & 0.555533 & \bfseries 0.481580 \\
-Find-Tuned VGG\textunderscore M Yolo & 0.721039 & \bfseries 0.596753 & 0.479783 \\
+Fine-Tuned ZF Faster R-CNN & \bfseries 0.721690 & 0.555533 & \bfseries 0.481580 \\
+Find-Tuned VGG\textunderscore M Faster R-CNN & 0.721039 & \bfseries 0.596753 & 0.479783 \\
 \hline
 \end{tabular}
 \caption{Average Precision on Car Detection}
@@ -301,8 +301,8 @@ Pre-Trained Yolo & 0.207263 & 0.189966 & 0.178328 \\
 Fine-Tuned Tiny Yolo & 0.214768 & 0.191912 & 0.179325 \\
 Fine-Tuned Big Yolo & 0.351823 & 0.304227 & 0.284068 \\
 Pre-Trained Faster R-CNN & 0.467467 & 0.404372 & 0.356576 \\
-Fine-Tuned ZF Yolo &  0.621262 & 0.556017 & \bfseries 0.526138 \\
-Find-Tuned VGG\textunderscore M Yolo & \bfseries 0.635249 & \bfseries 0.556700 & 0.520960 \\
+Fine-Tuned ZF Faster R-CNN &  0.621262 & 0.556017 & \bfseries 0.526138 \\
+Find-Tuned VGG\textunderscore M Faster R-CNN & \bfseries 0.635249 & \bfseries 0.556700 & 0.520960 \\
 \hline
 \end{tabular}
 \caption{Average Precision on Pedestrian Detection}
@@ -323,7 +323,7 @@ Method & Avg Height & Avg Width & Avg Area & cnt \\
 Fine-Tuned Tiny Yolo & 81.4113 & 130.9231 & 14518.8764 & 2601 \\
 Fine-Tuned Big Yolo & 67.6324 & 117.1498 & 11676.8592 & 3029 \\
 Fine-Tuned ZF Faster R-CNN & 63.7740 & 102.8394 & 10458.8683 & 3502 \\
-Find-Tuned VGG\textunderscore M Yolo & 62.7834 & 100.1970 & 9768.3991 & 3885 \\
+Find-Tuned VGG\textunderscore M Faster R-CNN & 62.7834 & 100.1970 & 9768.3991 & 3885 \\
 \hline
 \end{tabular}
 \caption{Detected Car Bounding Boxes Comparison}
@@ -339,12 +339,28 @@ Method & Avg Height & Avg Width & Avg Area & cnt \\
 Fine-Tuned Tiny Yolo & 158.6333 & 69.7682 & 12327.1655 & 235 \\
 Fine-Tuned Big Yolo & 132.4591 & 64.1588 & 9822.6585 & 225 \\
 Fine-Tuned ZF Faster R-CNN & 105.9067 & 45.7684 & 6179.3364 & 585 \\
-Find-Tuned VGG\textunderscore M Yolo & 96.6618 & 44.1266 & 5529.7738 & 662 \\
+Find-Tuned VGG\textunderscore M Faster R-CNN & 96.6618 & 44.1266 & 5529.7738 & 662 \\
 \hline
 \end{tabular}
 \caption{Detected Precision Bounding Boxes Comparison}
 \end{table}
 
+
+\subsection{Prediction Speed}
+\begin{table}[H]
+\centering
+\begin{tabular}{ c | c}
+\hline
+Method & FPS \\
+\hline \hline
+Fine-Tuned Tiny Yolo  & 70 \\
+Fine-Tuned Big Yolo & 14 \\
+Fine-Tuned ZF Faster R-CNN & 4\\
+Find-Tuned VGG\textunderscore M Faster R-CNN & 4\\
+\hline
+\end{tabular}
+\caption{Prediction Speed}
+\end{table}
 
 
 
