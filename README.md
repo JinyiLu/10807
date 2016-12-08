@@ -24,6 +24,7 @@
 ## Document
 * [Oct. 10 2016 Proposal](proposal/proposal10807.pdf)
 * [Nov. 9 2016 Midway Report](midway/midway10807.pdf)
+* [Dec. 7 2016 Final Report](final/final10807.pdf)
 
 ## References
 * [KITTI](http://www.cvlibs.net/datasets/kitti/eval_object.php)
